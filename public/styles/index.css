@@ -1,3 +1,7 @@
+:root{
+    --text-color: #fff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +10,8 @@
 
 body{
     min-height: 100vh;
+    background: #1e1e1e;
+    color: var(--text-color);
 }
 
 menu {
@@ -17,4 +23,13 @@ menu button {
     display: block;
     width: max-content;
     height: max-content;
+    margin: 0 10px;
+}
+
+button {
+    background-color: inherit;
+    color: var(--text-color);
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
 }
