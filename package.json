@@ -1,0 +1,23 @@
+{
+  "name": "matrix-calculators",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurLobopro/matrix-calculators.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArthurLobopro/matrix-calculators/issues"
+  },
+  "homepage": "https://github.com/ArthurLobopro/matrix-calculators#readme",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
