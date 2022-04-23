@@ -26,7 +26,7 @@ export function make_matrix(lines, columns, rules) {
  * @param {number[][]} m2 
  * @returns {number[][]}
  */
- export function sum(m1, m2) {
+export function sum(m1, m2) {
     const columns_m1 = m1[0].length
     const lines_m1 = m1.length
 
@@ -39,7 +39,7 @@ export function make_matrix(lines, columns, rules) {
                 return value + m2[lineIndex][columnIndex]
             })
         })
-    }else{
+    } else {
         const hasEqualsLines = lines_m1 === lines_m2
         const hasEqualsColumns = columns_m1 === columns_m2
 
@@ -56,7 +56,7 @@ export function make_matrix(lines, columns, rules) {
  * @param {number[][]} m2 
  * @returns {number[][]}
  */
- export function sub(m1, m2) {
+export function sub(m1, m2) {
     const columns_m1 = m1[0].length
     const lines_m1 = m1.length
 
@@ -69,7 +69,7 @@ export function make_matrix(lines, columns, rules) {
                 return value - m2[lineIndex][columnIndex]
             })
         })
-    }else{
+    } else {
         const hasEqualsLines = lines_m1 === lines_m2
         const hasEqualsColumns = columns_m1 === columns_m2
 
