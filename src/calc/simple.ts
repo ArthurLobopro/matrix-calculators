@@ -1,8 +1,6 @@
 import { isEqualFormat } from "./Util.js"
 
-import { matrix, defaultReturns } from "./types"
-
-
+import { matrix, defaultReturns, make_rules } from "./types"
 
 function subOrSum(m1: matrix, m2: matrix, operation: "+" | "-"): defaultReturns {
     if (isEqualFormat(m1, m2)) {
@@ -40,4 +38,32 @@ export function multiply(matrix: matrix, multiplier: number): defaultReturns {
     const result_matrix = calcs_matrix.map(line => line.map(column => eval(column)))
 
     return { calcs: calcs_matrix, result: result_matrix }
+}
+
+export function transverse(matrix: matrix): matrix {
+    const lines = matrix.length
+    const columns = matrix[0].length
+
+    const result_matrix = Array.from({ length: columns }, (_, column_index) => {
+        return Array.from({ length: lines }, (_, line_index) => matrix[line_index][column_index])
+    })
+
+    return result_matrix
+}
+
+export function make_matrix(lines: number, columns: number, rules: make_rules) {
+    const rules_entries = Object.entries(rules)
+
+    const matrix = Array.from({ length: lines }, (_, line_index) => {
+        return Array.from({ length: columns }, (_, column_index) => {
+            const command = (rules_entries.find(([condition]) => eval(condition)) as [string, string])[1]
+            return eval(`() => {
+                const c = ${column_index + 1}
+                const l = ${line_index + 1}
+                return ${command}
+            }`)
+        })
+    })
+
+    return matrix
 }
