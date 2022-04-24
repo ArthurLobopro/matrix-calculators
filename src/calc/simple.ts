@@ -51,19 +51,26 @@ export function transverse(matrix: matrix): matrix {
     return result_matrix
 }
 
-export function make_matrix(lines: number, columns: number, rules: make_rules) {
+export function make_matrix(lines: number, columns: number, rules: make_rules): matrix {
     const rules_entries = Object.entries(rules)
 
     const matrix = Array.from({ length: lines }, (_, line_index) => {
         return Array.from({ length: columns }, (_, column_index) => {
+            const c = column_index + 1
+            const l = line_index + 1
             const command = (rules_entries.find(([condition]) => eval(condition)) as [string, string])[1]
             return eval(`() => {
-                const c = ${column_index + 1}
-                const l = ${line_index + 1}
                 return ${command}
-            }`)
+            }`)()
         })
     })
 
     return matrix
+}
+
+export function identity(order: number) {
+    return make_matrix(order, order, {
+        "l==c": "1",
+        "l!=c": "0"
+    })
 }
