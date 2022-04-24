@@ -1,10 +1,15 @@
 import { matrix } from "./types"
+import { isSquareOrder } from "./Util"
 
 function multiplyArray(array: number[]) {
     return array.reduce((total, value) => total * value, 1)
 }
 
 export function determinant2x2(matrix: matrix) {
+    if (!isSquareOrder(matrix, 2)) {
+        throw new Error("A matrix não corresponde a uma matrix 2x2");
+    }
+
     const principal_diagonal: number[] = []
     const secondary_diagonal: number[] = []
 
@@ -34,6 +39,10 @@ function format_diagonal_multiply(array: number[]) {
 }
 
 export function determinant3x3(matrix: matrix) {
+
+    if (!isSquareOrder(matrix, 3)) {
+        throw new Error("A matrix não corresponde a uma matrix 3x3");
+    }
 
     function append2Columns() {
         for (let c = 0; c < 2; c++) {
